@@ -1,0 +1,31 @@
+<h1><%= link_to @blog.name, edit_blog_path %></h1>
+<% if !@blog.posts.empty? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><h2>posts</h2></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @blog.posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.title, blog_post_path(@blog, post) %></td>
+            <td>By: <%= post.blog.user.name %></td>
+            <% if post.blog.user == current_user %>
+              <td><%= link_to 'Edit', edit_blog_path(@blog) %></td>
+              <td><%= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <th><h2>No posts, yet.</h2></th>
+<% end %>
+<br>
+
+<%= link_to 'New Post', new_blog_post_path(@blog), class: "btn btn-default" %>
+

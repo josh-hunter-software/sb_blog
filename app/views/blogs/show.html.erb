@@ -1,4 +1,5 @@
-<h1><%= link_to @blog.name, edit_blog_path %></h1>
+
+<h1><%= image_tag @blog.logo.url, size: "100x100", class: "blog-logo" if @blog.logo %><%= link_to @blog.name, edit_blog_path %></h1>
 <% if !@blog.posts.empty? %>
   <div class="table-responsive">
     <table class="table table-striped">

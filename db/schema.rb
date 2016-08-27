@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814043810) do
+ActiveRecord::Schema.define(version: 20160820185048) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20160814043810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "slug"
+    t.string   "users"
+    t.string   "logo"
   end
 
   add_index "blogs", ["user_id"], name: "index_blogs_on_user_id"
